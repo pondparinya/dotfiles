@@ -9,7 +9,7 @@ config: ## install configuration
 	ln -vsfn ${PWD}/.zshrc ${HOME}/.zshrc
 	ln -vsfn ${PWD}/.tmux.conf ${HOME}/.tmux.conf
 	ln -vsfn ${PWD}/.tmux.conf.local ${HOME}/.tmux.conf.local
-	ln -vsfn ${PWD}/.vimrc ${HOME}/.vimrc
+	# ln -vsfn ${PWD}/.vimrc ${HOME}/.vimrc
 	# depend on each resolution
 
 help:
