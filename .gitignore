@@ -1,0 +1,9 @@
+/* junk */
+.DS_Store
+.MacOSX
+.Trash
+.netrwhist
+
+
+/* plugin nvim */
+.config/nvim/plugged
