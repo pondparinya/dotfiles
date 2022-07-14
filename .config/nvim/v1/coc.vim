@@ -10,7 +10,7 @@ let g:coc_global_extensions = [
       \'coc-go',
       \'coc-prettier',
       \'coc-emmet',
-      \'coc-python'
+      \'coc-python',
     \]
 inoremap <silent><expr> <Tab> coc#refresh()
 

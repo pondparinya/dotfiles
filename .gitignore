@@ -4,6 +4,8 @@
 .Trash
 .netrwhist
 
+.config/coc
+
 
 /* plugin nvim */
 .config/nvim/plugged
