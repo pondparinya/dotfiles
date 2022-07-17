@@ -1,23 +1,27 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
 # Startup with Tmux
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux || tmux new
 fi
 
-# Startup with P10K
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# # Startup with P10K
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM=$ZSH/custom
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="spaceship"
 
-CASE_SENSITIVE="true"
-HYPHEN_INSENSITIVE="true"
-DISABLE_AUTO_UPDATE="true"
-DISABLE_LS_COLORS="true"
-DISABLE_AUTO_TITLE="true"
-DISABLE_UNTRACKED_FILES_DIRTY="true"
+# CASE_SENSITIVE="true"
+# HYPHEN_INSENSITIVE="true"
+# DISABLE_AUTO_UPDATE="true"
+# DISABLE_LS_COLORS="true"
+# DISABLE_AUTO_TITLE="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # export KITTY_CONFIG_DIRECTORY="$HOME/.config/kitty/kitty.conf"
 
@@ -80,6 +84,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Alias Script
 alias kitty-config="vi $HOME/.config/kitty/"
+alias tmx="tmux source-file ~/.tmux.conf"
 alias vim="nvim"
 alias vi="nvim"
 alias g3="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
@@ -97,3 +102,4 @@ alias envdevelop='export $(cd ~ &&  bns && cd bn-env && cat .env.develop | xargs
 alias envstaging='export $(cd  ~ && bns && cd bn-env && cat .env.staging | xargs)'
 alias envprod='export $(export $(cd  ~ && bns && cd bn-env && cat .env.production | xargs)'
 
+# source ~/powerlevel10k/powerlevel10k.zsh-theme
