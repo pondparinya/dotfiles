@@ -1,5 +1,6 @@
 formulas=(
   go
+  gotop
   neovim
   nvm
   tmux
@@ -18,7 +19,7 @@ echo -n "Proceed? [y/n]: "
 
 read ans
 
-if [ $ans = "y" ]; then
+if [[ $ans = "y" ]]; then
   echo "---------------------------------------------"
   echo "Start Installing Packages Formulas..."
   echo "---------------------------------------------"

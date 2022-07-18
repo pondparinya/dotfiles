@@ -1,20 +1,17 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
 # Startup with Tmux
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux || tmux new
 fi
 
-# # Startup with P10K
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+# Startup with P10K
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM=$ZSH/custom
-# ZSH_THEME="powerlevel10k/powerlevel10k"
-ZSH_THEME="spaceship"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
 
 # CASE_SENSITIVE="true"
 # HYPHEN_INSENSITIVE="true"
@@ -65,14 +62,6 @@ export PATH=$PATH:$GOROOT/bin
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
 
-# P10K config
-[[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh
-POWERLEVEL9K_DIR_MAX_LENGTH=1
-POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_last"
-ZLE_RPROMPT_INDENT=0
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # NVM Config
 export NVM_DIR="$HOME/.nvm"
@@ -102,4 +91,12 @@ alias envdevelop='export $(cd ~ &&  bns && cd bn-env && cat .env.develop | xargs
 alias envstaging='export $(cd  ~ && bns && cd bn-env && cat .env.staging | xargs)'
 alias envprod='export $(export $(cd  ~ && bns && cd bn-env && cat .env.production | xargs)'
 
-# source ~/powerlevel10k/powerlevel10k.zsh-theme
+# P10K config
+[[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh
+POWERLEVEL9K_DIR_MAX_LENGTH=1
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_last"
+ZLE_RPROMPT_INDENT=0
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source ~/powerlevel10k/powerlevel10k.zsh-theme

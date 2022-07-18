@@ -16,7 +16,7 @@ done
 echo -n "Proceed? [y/n]: "
 
 read ans
-if [ $ans = "y" ]; then
+if [[ $ans == "y" ]]; then
   echo "---------------------------------------------"
   echo "Start Installing Apps..."
   echo "---------------------------------------------"
