@@ -24,11 +24,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # ZSH Plugins
 plugins=(
-		git
+    git
     docker
     zsh-syntax-highlighting
     zsh-autosuggestions
-	)
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -36,7 +36,7 @@ source $ZSH/oh-my-zsh.sh
 export VISUAL='nvim'
 export EDITOR='nvim'
 export HOMEBREW_NO_AUTO_UPDATE=1
-export LANG=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
 # Custom binary file (ubuntu)
 export PATH=$PATH:$HOME/bin
@@ -62,14 +62,15 @@ export PATH=$PATH:$GOROOT/bin
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
 
+# P10K config
+[[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh
+POWERLEVEL9K_DIR_MAX_LENGTH=1
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_last"
+ZLE_RPROMPT_INDENT=0
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# NVM Config
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# Bash Completion
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # Alias Script
 alias kitty-config="vi $HOME/.config/kitty/"
@@ -90,13 +91,19 @@ alias envheroku='export $(cd ~ && bns && cd bn-env && cat .env.develop | xargs)'
 alias envdevelop='export $(cd ~ &&  bns && cd bn-env && cat .env.develop | xargs)'
 alias envstaging='export $(cd  ~ && bns && cd bn-env && cat .env.staging | xargs)'
 alias envprod='export $(export $(cd  ~ && bns && cd bn-env && cat .env.production | xargs)'
+alias gitc="git clone "
+alias dt="nvim $HOME/dotfiles"
+# alias tkill = "tmux kill-window"
 
-# P10K config
-[[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh
-POWERLEVEL9K_DIR_MAX_LENGTH=1
-POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_last"
-ZLE_RPROMPT_INDENT=0
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# NVM Config
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# Bash Completion
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+
