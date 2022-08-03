@@ -20,22 +20,27 @@ vim.g.maplocalleader = ","
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
-
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- Formatting 
 keymap("n", "<leader>f", ":Format<CR>", opts)
 keymap("n", "<leader>F", ":FormatWrite<CR>", opts)
 
 -- Resize with arrows
-keymap("n", "<A-Up>", ":resize -2<CR>", opts)
-keymap("n", "<A-Down>", ":resize +2<CR>", opts)
-keymap("n", "<A-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<A-,>", ":resize -2<CR>", opts)
+keymap("n", "<A-.>", ":resize +2<CR>", opts)
+keymap("n", "<leader>Left", ":vertical resize -2<CR>", opts)
+keymap("n", "<leader>Right", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
+keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
+keymap("n", "<S-Left>", ":BufferLineMovePrev<CR>", opts)
+keymap("n", "<S-Right>", ":BufferLineMoveNext<CR>", opts)
+keymap("n", "<C-\\>", ":BufferLineGroupClose ungrouped<CR>", opts)
+keymap("n", "<C-q>", ":Bdelete<CR>", opts)
+
 
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
@@ -46,9 +51,9 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
--- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+-- Stay in indent mode
 
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)

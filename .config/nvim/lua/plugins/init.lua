@@ -6,7 +6,7 @@ function M.run()
 	if not status_ok then
 		return
 	end
-	local configs = require("core.packer").configs
+	local configs = require("core.packers").configs
 	packer.init(configs)
 
 	packer.startup(function(use)
@@ -23,7 +23,7 @@ function M.run()
 		})
 
 		-- Commentary
-    use {"tpope/vim-commentary"}
+		use({ "tpope/vim-commentary" })
 
 		-- Nvim-tree
 		use({
@@ -32,17 +32,13 @@ function M.run()
 				"kyazdani42/nvim-web-devicons", -- icons
 			},
 			config = function()
-				require("plugins.configs.nvimtree")
+				require("plugins.configs.nvim-tree")
 			end,
 		})
 
 		-- Theme colors
-		use({
-			"navarasu/onedark.nvim",
-			config = function()
-				require("plugins.configs.theme").setup()
-			end,
-		})
+		use({ "navarasu/onedark.nvim" })
+		use({ "Mofiqul/dracula.nvim" })
 
 		-- Treesitter
 		use({
@@ -112,9 +108,19 @@ function M.run()
 		use({
 			"nvim-lualine/lualine.nvim",
 			config = function()
-				require("plugins.configs.lualine")
+				require("plugins.configs.status_lualine")
 			end,
 		})
+
+		-- Tab Line
+		use({
+			"akinsho/bufferline.nvim",
+			tag = "v2.*",
+			config = function()
+				require("plugins.configs.tab_bufferline").setup()
+			end,
+		})
+		use({ "moll/vim-bbye" })
 
 		-- Indent-blankline
 		use({
@@ -132,7 +138,7 @@ function M.run()
 			end,
 		})
 
-	  -- Formatting
+		-- Formatting
 		use({
 			"mhartington/formatter.nvim",
 			config = function()

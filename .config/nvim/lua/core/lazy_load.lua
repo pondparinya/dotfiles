@@ -41,8 +41,8 @@ M.on_file_open = function(plugin_name)
   }
 end
 
--- lspinstaller & lspconfig cmds for lazyloading
 M.lsp_cmds = {
+-- lspinstaller & lspconfig cmds for lazyloading
   "LspInfo",
   "LspStart",
   "LspRestart",

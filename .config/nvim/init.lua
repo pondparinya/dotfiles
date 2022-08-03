@@ -4,6 +4,9 @@
 require("core")
 require("core.general")
 require("core.keymaps")
-require("core.packer").bootstrap()
+
+require("plugins.configs.colortheme")
+
+require("core.packers").bootstrap()
 
 require("plugins").run()
