@@ -25,7 +25,14 @@ local options = {
 		adaptive_size = true,
 		side = "left",
 		width = 25,
-		hide_root_folder = true,
+		hide_root_folder = false,
+		mappings = {
+			list = {
+				{ key = "s", action = "split", mode = "n" },
+				{ key = "i", action = "vsplit", mode = "n" },
+				{ key = "O", action = "system_open", mode = "n" },
+			},
+		},
 	},
 	git = {
 		enable = true,

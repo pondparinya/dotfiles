@@ -128,7 +128,7 @@ function M.run()
 		-- Tab Line
 		use({
 			"akinsho/bufferline.nvim",
-			tag = "v2.*",
+			-- tag = "v2.*",
 			config = function()
 				require("plugins.configs.tab_bufferline").setup()
 			end,
