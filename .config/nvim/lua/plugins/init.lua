@@ -12,13 +12,28 @@ function M.run()
 	packer.startup(function(use)
 		use({ "wbthomason/packer.nvim" })
 
-		-- Load only when require
-		use({ "nvim-lua/plenary.nvim", module = "plenary" })
-
+		-- Dashboard
 		use({
 			"goolord/alpha-nvim",
 			config = function()
 				require("plugins.configs.alpha")
+			end,
+		})
+
+		-- Telescope
+		use({
+			"nvim-telescope/telescope.nvim",
+			config = function()
+				require("plugins.configs.telescope2")
+			end,
+		})
+		use({ "nvim-lua/plenary.nvim", module = "plenary" })
+    use { "nvim-telescope/telescope-file-browser.nvim" }
+
+		use({
+			"ahmedkhalf/project.nvim",
+			config = function()
+				require("plugins.configs.project")
 			end,
 		})
 
@@ -32,7 +47,7 @@ function M.run()
 				"kyazdani42/nvim-web-devicons", -- icons
 			},
 			config = function()
-				require("plugins.configs.nvim-tree")
+				require("plugins.configs.nvimtree")
 			end,
 		})
 
@@ -55,7 +70,6 @@ function M.run()
 		})
 
 		-- Lsp stuff
-
 		use({
 			"williamboman/nvim-lsp-installer",
 			cmd = require("core.lazy_load").lsp_cmds,
@@ -74,7 +88,6 @@ function M.run()
 		})
 
 		-- Cmp
-
 		use({ "rafamadriz/friendly-snippets", module = "cmp_nvim_lsp", event = "InsertEnter" })
 
 		use({

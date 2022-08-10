@@ -1,7 +1,7 @@
 # Startup with Tmux
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux || tmux new
-fi
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#     tmux || tmux new
+# fi
 
 # Startup with P10K
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -10,10 +10,11 @@ fi
 
 ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM=$ZSH/custom
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="clean"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 # HYPHEN_INSENSITIVE="true"
 # DISABLE_AUTO_UPDATE="true"
 # DISABLE_LS_COLORS="true"
@@ -25,15 +26,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH Plugins
 plugins=(
     git
-    docker
-    zsh-syntax-highlighting
-    zsh-autosuggestions
 )
 
-source $ZSH/oh-my-zsh.sh
-
 # Export Global Environments Variable
-export VISUAL='nvim'
+# export VISUAL='nvim'
 export EDITOR='nvim'
 export HOMEBREW_NO_AUTO_UPDATE=1
 # export LANG=en_US.UTF-8
@@ -73,9 +69,8 @@ ZLE_RPROMPT_INDENT=0
 
 
 # Alias Script
-alias kitty-config="vi $HOME/.config/kitty/"
 alias tmx="tmux source-file ~/.tmux.conf"
-alias vim="nvim"
+alias vim="vim"
 alias vi="nvim"
 alias g3="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias gs="git status"
@@ -103,7 +98,10 @@ export NVM_DIR="$HOME/.nvm"
 
 # Bash Completion
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 
+source $ZSH/oh-my-zsh.sh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 

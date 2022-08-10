@@ -4,6 +4,7 @@ formulas=(
   neovim
   nvm
   tmux
+  ripgrep
 
   # Pretty format
   stylua
