@@ -28,6 +28,7 @@ local configs = {
 				{ key = "s", action = "split", mode = "n" },
 				{ key = "i", action = "vsplit", mode = "n" },
 				{ key = "O", action = "system_open", mode = "n" },
+				{ key = "<C-k>", action = "" },
 			},
 		},
 	},

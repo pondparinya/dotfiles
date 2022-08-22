@@ -4,6 +4,7 @@ apps=(
   discord
   spotify
   docker
+  robo-3t
 )
 install_brew_apps() {
   echo "You want install Applications ?"

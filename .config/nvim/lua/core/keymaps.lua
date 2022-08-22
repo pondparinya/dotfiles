@@ -77,8 +77,12 @@ keymap("n", "<leader>r", ": Telescope find_files <CR>", opts)
 keymap("n", "<leader>g", ": Telescope find_files <CR>", opts)
 
 -- Resize with arrows
-keymap("n", "_", ": vertical resize -1<CR>", opts)
-keymap("n", "+", ": vertical resize +3<CR>", opts)
+keymap("n", "_", ": vertical resize -2<CR>", opts)
+keymap("n", "+", ": vertical resize +2<CR>", opts)
+keymap("n", "{", ": resize -2<CR>", opts)
+keymap("n", "}", ": resize +2<CR>", opts)
+
+
 -- keymap("n", "<leader>Left", ":vertical resize -2<CR>", opts)
 -- keymap("n", "<leader>Right", ":vertical resize +2<CR>", opts)
 

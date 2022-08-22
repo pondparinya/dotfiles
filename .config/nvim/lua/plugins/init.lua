@@ -23,6 +23,7 @@ function M.run()
 		-- })
 
 		-- Dashboard
+		-- STATUS / PENDING
 		use({
 			"goolord/alpha-nvim",
 			config = function()
@@ -30,7 +31,17 @@ function M.run()
 			end,
 		})
 
+		-- Which-key
+		-- STATUS / PENDING
+		use({
+			"folke/which-key.nvim",
+			config = function()
+				require("plugins.configs.whichkey")
+			end,
+		})
+
 		-- Terminal
+		-- STATUS / PENDING
 		use({
 			"akinsho/toggleterm.nvim",
 			cmd = "ToggleTerm",
@@ -40,9 +51,34 @@ function M.run()
 			end,
 		})
 
+		-- Autoparis
+		-- STATUS / DONE
+		use({
+			"windwp/nvim-autopairs",
+			event = "InsertEnter",
+			config = function()
+				require("plugins.configs.autopairs")
+			end,
+		})
+
+		-- Colorizer
+		-- STATUS / DONE
+		use({
+			"norcalli/nvim-colorizer.lua",
+			event = { "BufRead", "BufNewFile" },
+			config = function()
+				require("plugins.configs.colorizer")
+			end,
+		})
+		-- Auto Close Tag
+		-- STATUS / DONE
+		use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
+
 		-- Telescope
+		-- STATUS / PENDING
 		use({
 			"nvim-telescope/telescope.nvim",
+			requires = { "nvim-telescope/telescope-file-browser.nvim" },
 			config = function()
 				require("plugins.configs.telescope.init")
 			end,
@@ -58,9 +94,12 @@ function M.run()
 		})
 
 		-- Commentary
+		-- STATUS / DONE
+
 		use({ "tpope/vim-commentary" })
 
 		-- Nvim-tree
+		-- STATUS / DONE
 		use({
 			"kyazdani42/nvim-tree.lua",
 			requires = {
@@ -72,10 +111,12 @@ function M.run()
 		})
 
 		-- Theme colors
+		-- STATUS / DONE
 		use({ "navarasu/onedark.nvim" })
 		use({ "Mofiqul/dracula.nvim" })
 
 		-- Treesitter
+		-- STATUS / DONE
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			run = ":TSUpdate",
@@ -96,6 +137,7 @@ function M.run()
 		})
 
 		-- Lsp stuff
+		-- STATUS / DONE
 		use({
 			"williamboman/nvim-lsp-installer",
 			cmd = require("core.lazy_load").lsp_cmds,
@@ -113,6 +155,7 @@ function M.run()
 			end,
 		})
 
+		-- STATUS / PENDING
 		-- Cmp
 		use({ "rafamadriz/friendly-snippets", module = "cmp_nvim_lsp", event = "InsertEnter" })
 
@@ -144,6 +187,7 @@ function M.run()
 		use({ "hrsh7th/cmp-path", after = "cmp-buffer" })
 
 		-- Status Line
+		-- STATUS / DONE
 		use({
 			"nvim-lualine/lualine.nvim",
 			config = function()
@@ -152,6 +196,7 @@ function M.run()
 		})
 
 		-- Tab Line
+		-- STATUS / DONE
 		use({
 			"akinsho/bufferline.nvim",
 			-- tag = "v2.*",
@@ -162,6 +207,7 @@ function M.run()
 		use({ "moll/vim-bbye" })
 
 		-- Indent-blankline
+		-- STATUS / DONE
 		use({
 			"lukas-reineke/indent-blankline.nvim",
 			event = "BufRead",
@@ -171,6 +217,7 @@ function M.run()
 		})
 
 		-- Gitsign
+		-- STATUS / PENDING
 		use({
 			"lewis6991/gitsigns.nvim",
 			config = function()
@@ -179,6 +226,7 @@ function M.run()
 		})
 
 		-- Formatting
+		-- STATUS / DONE
 		use({
 			"mhartington/formatter.nvim",
 			config = function()
