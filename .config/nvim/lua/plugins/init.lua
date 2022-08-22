@@ -10,7 +10,17 @@ function M.run()
 	packer.init(configs)
 
 	packer.startup(function(use)
+		-- Plugins Manager
 		use({ "wbthomason/packer.nvim" })
+
+		-- Notifiactions
+		-- use({
+		-- 	"rcarriga/nvim-notify",
+		-- 	event = "VimEnter",
+		-- 	config = function()
+		-- 		require("plugins.configs.notify")
+		-- 	end,
+		-- })
 
 		-- Dashboard
 		use({
@@ -20,15 +30,25 @@ function M.run()
 			end,
 		})
 
+		-- Terminal
+		use({
+			"akinsho/toggleterm.nvim",
+			cmd = "ToggleTerm",
+			module = { "toggleterm", "toggleterm.terminal" },
+			config = function()
+				require("plugins.configs.toggleterm")
+			end,
+		})
+
 		-- Telescope
 		use({
 			"nvim-telescope/telescope.nvim",
 			config = function()
-				require("plugins.configs.telescope2")
+				require("plugins.configs.telescope.init")
 			end,
 		})
 		use({ "nvim-lua/plenary.nvim", module = "plenary" })
-    use { "nvim-telescope/telescope-file-browser.nvim" }
+		use({ "nvim-telescope/telescope-file-browser.nvim" })
 
 		use({
 			"ahmedkhalf/project.nvim",
@@ -58,12 +78,18 @@ function M.run()
 		-- Treesitter
 		use({
 			"nvim-treesitter/nvim-treesitter",
-			module = "nvim-treesitter",
-			setup = function()
-				require("core.lazy_load").on_file_open("nvim-treesitter")
-			end,
-			cmd = require("core.lazy_load").treesitter_cmds,
 			run = ":TSUpdate",
+			event = { "BufRead", "BufNewFile" },
+			-- cmd = {
+			-- 	"TSInstall",
+			-- 	"TSInstallInfo",
+			-- 	"TSInstallSync",
+			-- 	"TSUninstall",
+			-- 	"TSUpdate",
+			-- 	"TSUpdateSync",
+			-- 	"TSDisableAll",
+			-- 	"TSEnableAll",
+			-- },
 			config = function()
 				require("plugins.configs.treesitter").setup()
 			end,
@@ -138,6 +164,7 @@ function M.run()
 		-- Indent-blankline
 		use({
 			"lukas-reineke/indent-blankline.nvim",
+			event = "BufRead",
 			config = function()
 				require("plugins.configs.blankline")
 			end,

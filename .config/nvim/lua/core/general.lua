@@ -44,6 +44,7 @@ end
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+-- vim.cmd [[ set statusline+=%{get(b:,'gitsigns_status','')} ]]
 -- vim.cmd [[ set guicursor= ]]
 
-vim.api.nvim_command('set commentstring=//%s')
+-- vim.api.nvim_command('set commentstring=//%s')

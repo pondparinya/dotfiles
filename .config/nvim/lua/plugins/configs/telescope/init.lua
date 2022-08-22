@@ -9,14 +9,29 @@ local extension = require("plugins.configs.telescope.extension")
 
 local options = {
 	extensions_list = {
-		"file_browser",
+		-- "file_browser",
 	},
 	defaults = {
+		-- vimgrep_arguments = {
+		-- 	"rg",
+		-- 	"--color=never",
+		-- 	"--no-heading",
+		-- 	"--with-filename",
+		-- 	"--line-number",
+		-- 	"--column",
+		-- 	"--smart-case",
+		-- },
+
 		prompt_prefix = " ",
 		selection_caret = " ",
 		mappings = mappings,
 	},
-	-- pickers = picker,
+  picker = picker,
+	-- pickers = {
+    -- find_files = {
+      -- hidden = true
+    -- }
+  -- },
 	extensions = extension,
 }
 
