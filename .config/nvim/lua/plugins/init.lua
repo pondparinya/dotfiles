@@ -23,7 +23,7 @@ function M.run()
 		-- })
 
 		-- Dashboard
-		-- STATUS / PENDING
+		-- STATUS / DONE
 		use({
 			"goolord/alpha-nvim",
 			config = function()

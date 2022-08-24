@@ -39,3 +39,6 @@ autocmd({ "BufAdd", "BufEnter" }, {
 		end
 	end,
 })
+
+
+vim.cmd [[autocmd BufReadPost,FileReadPost * normal zR ]]

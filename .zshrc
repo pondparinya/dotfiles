@@ -7,6 +7,8 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+# For mac M1
+export PATH=/opt/homebrew/bin:$PATH
 
 ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM=$ZSH/custom

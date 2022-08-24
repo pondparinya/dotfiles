@@ -5,12 +5,15 @@
 -- 	impatient.enable_profile()
 -- end
 
-require("core")
-require("core.general")
 require("core.keymaps")
+
 
 require("plugins.configs.colortheme")
 
 require("core.packers").bootstrap()
 
 require("plugins").run()
+
+require("core.general")
+require("core")
+

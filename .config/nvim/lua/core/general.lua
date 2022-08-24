@@ -37,6 +37,16 @@ local options = {
 
 vim.opt.shortmess:append "c"
 
+
+-- vim.opt.foldmethod="indent"
+-- vim.opt.foldnestmax=10
+-- vim.cmd [[ set nofoldenable ]]
+-- vim.opt.foldlevel=2
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.cmd [[set nofoldenable]]
+
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
