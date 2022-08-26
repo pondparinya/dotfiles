@@ -32,7 +32,7 @@ function M.run()
 		})
 
 		-- Which-key
-		-- STATUS / PENDING
+		-- STATUS / DONE
 		use({
 			"folke/which-key.nvim",
 			config = function()
@@ -41,7 +41,7 @@ function M.run()
 		})
 
 		-- Terminal
-		-- STATUS / PENDING
+		-- STATUS / DONE
 		use({
 			"akinsho/toggleterm.nvim",
 			cmd = "ToggleTerm",
@@ -155,7 +155,7 @@ function M.run()
 			end,
 		})
 
-		-- STATUS / PENDING
+		-- STATUS / DONE (but can enhancement)
 		-- Cmp
 		use({ "rafamadriz/friendly-snippets", module = "cmp_nvim_lsp", event = "InsertEnter" })
 
@@ -217,7 +217,7 @@ function M.run()
 		})
 
 		-- Gitsign
-		-- STATUS / PENDING
+		-- STATUS / DONE
 		use({
 			"lewis6991/gitsigns.nvim",
 			config = function()

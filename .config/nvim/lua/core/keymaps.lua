@@ -68,13 +68,11 @@ keymap("n", "<C-f>", ":Format<CR>", opts)
 
 -- Nvim Tree
 keymap("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", opts)
-keymap("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", opts)
+-- keymap("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", opts)
 
--- Telescope
-keymap("n", "<leader>f", ": Telescope find_files <CR>", opts)
-keymap("n", "<leader>p", ": Telescope file_browser <CR>", opts)
-keymap("n", "<leader>r", ": Telescope find_files <CR>", opts)
-keymap("n", "<leader>g", ": Telescope find_files <CR>", opts)
+-- -- telescope
+-- keymap("n", "<leader>f", ": telescope find_files <cr>", opts)
+-- keymap("n", "<leader>p", ": telescope file_browser <cr>", opts)
 
 -- Resize with arrows
 keymap("n", "_", ": vertical resize -2<CR>", opts)
