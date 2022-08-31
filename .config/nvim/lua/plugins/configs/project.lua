@@ -1,5 +1,3 @@
-local M = {}
-M.setup = function() end
 local status_ok, project = pcall(require, "project_nvim")
 if not status_ok then
 	return
@@ -7,7 +5,7 @@ end
 project.setup({
 	-- Manual mode doesn't automatically change your root directory, so you have
 	-- the option to manually do so using `:ProjectRoot` command.
-	manual_mode = true,
+	manual_mode = false,
 
 	-- Methods of detecting the root directory. **"lsp"** uses the native neovim
 	-- lsp, while **"pattern"** uses vim-rooter like glob pattern matching. Here
@@ -28,7 +26,7 @@ project.setup({
 	exclude_dirs = {},
 
 	-- Show hidden files in telescope
-	show_hidden = true,
+	show_hidden = false,
 
 	-- When set to false, you will get a message when project.nvim changes your
 	-- directory.
@@ -39,11 +37,10 @@ project.setup({
 	datapath = vim.fn.stdpath("data"),
 })
 
-local tele_status_ok, telescope = pcall(require, "telescope")
-if not tele_status_ok then
-	return
-end
+-- local tele_status_ok, telescope = pcall(require, "telescope")
+-- if not tele_status_ok then
+-- 	return
+-- end
 
-telescope.load_extension("projects")
+-- telescope.load_extension("projects")
 
-return M

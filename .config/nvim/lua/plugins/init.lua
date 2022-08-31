@@ -74,6 +74,14 @@ function M.run()
 		-- STATUS / DONE
 		use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
 
+		-- Projects Nvim
+		-- STATUS / PENDING
+		use({
+			"ahmedkhalf/project.nvim",
+			config = function()
+				require("plugins.configs.project")
+			end,
+		})
 		-- Telescope
 		-- STATUS / PENDING
 		use({
@@ -84,14 +92,6 @@ function M.run()
 			end,
 		})
 		use({ "nvim-lua/plenary.nvim", module = "plenary" })
-		use({ "nvim-telescope/telescope-file-browser.nvim" })
-
-		use({
-			"ahmedkhalf/project.nvim",
-			config = function()
-				require("plugins.configs.project")
-			end,
-		})
 
 		-- Commentary
 		-- STATUS / DONE

@@ -7,6 +7,8 @@ local configs = {
 	filters = {
 		dotfiles = false,
 	},
+	respect_buf_cwd = true,
+	sync_root_with_cwd = true,
 	disable_netrw = true,
 	hijack_netrw = true,
 	open_on_setup = false,
@@ -16,7 +18,7 @@ local configs = {
 	update_cwd = true,
 	update_focused_file = {
 		enable = true,
-		update_cwd = false,
+		update_root = true,
 	},
 	view = {
 		adaptive_size = true,
@@ -30,6 +32,17 @@ local configs = {
 				{ key = "O", action = "system_open", mode = "n" },
 				{ key = "<C-k>", action = "" },
 			},
+		},
+	},
+	diagnostics = {
+		enable = true,
+		show_on_dirs = true,
+		debounce_delay = 50,
+		icons = {
+			hint ="",
+			info = "",
+			warning = "",
+			error = "",
 		},
 	},
 	git = {
@@ -89,7 +102,6 @@ local configs = {
 
 -- local options = {
 -- 	sync_root_with_cwd = true,
--- 	respect_buf_cwd = true,
 -- 	update_focused_file = {
 -- 		enable = true,
 -- 		update_root = true,
