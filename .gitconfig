@@ -1,8 +1,5 @@
-# This is Git's per-user configuration file.
 [user]
     name = Parinya
     email = pondparinyaaa@gmail.com
 ; [core]
-;     editor = vim
-[url "git@github.com:"]
-    insteadOf = https://github.com/pondparinya
+;     editor = nvim

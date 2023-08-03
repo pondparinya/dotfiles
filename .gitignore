@@ -3,14 +3,3 @@
 .MacOSX
 .Trash
 .netrwhist
-
-
-
-/* plugin nvim */
-.config/nvim/plugged
-.config/nvim/plugin
-.config/coc
-
-
-
-
