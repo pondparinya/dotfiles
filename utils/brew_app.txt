@@ -1,0 +1,6 @@
+alt-tab
+brave-browser
+discord
+docker
+postman
+stats

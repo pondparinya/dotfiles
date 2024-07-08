@@ -1,0 +1,9 @@
+git
+go
+gotop
+lazygit
+libtool
+neovim
+node
+rg
+zsh
