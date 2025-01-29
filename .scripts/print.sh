@@ -10,7 +10,12 @@ NC='\033[0m' # No Color
 print_message() {
   local color=$1
   local message=$2
-  echo -e "${color}${message}${NC}"
+  local format=${3:-""} # Default to empty (no format)
+  echo -e "${format}${color}${message}${NC}"
+}
+
+print_error() {
+  print_message "$RED" "Error: $1"
 }
 
 # Function to print a specified number of new lines
@@ -27,6 +32,7 @@ directory_exists() {
     print_message $YELLOW "$1 already exists."
     return 0
   else
+    print_message "$RED" "$1 does not exist."
     return 1
   fi
 }

@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Source the individual scripts
-. scripts/print.sh
-. scripts/install_homebrew.sh
-. scripts/install_brew_packages.sh
-. scripts/set_default_shell.sh
+source .scripts/print.sh
+source .scripts/install_homebrew.sh
+source .scripts/install_brew_packages.sh
+source .scripts/set_default_shell.sh
 . scripts/install_ohmyzsh.sh
 
 main() {
@@ -12,8 +12,8 @@ main() {
   install_brew_packages
   install_fonts
   set_default_shell
-  set_up_ohmyzsh
-  source install_nvim.sh
+  # set_up_ohmyzsh
+  # source install_nvim.sh
 }
 
 # Call the main function

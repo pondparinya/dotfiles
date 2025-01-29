@@ -7,3 +7,5 @@ neovim
 node
 rg
 zsh
+fzf
+fd
