@@ -1,3 +1,7 @@
+bat
+eza
+fd
+fzf
 git
 go
 gotop
@@ -5,7 +9,9 @@ lazygit
 libtool
 neovim
 node
+powerlevel10k
 rg
+ripgrep
+thefuck
+zoxide
 zsh
-fzf
-fd
