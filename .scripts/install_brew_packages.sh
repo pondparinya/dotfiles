@@ -28,19 +28,3 @@ install_brew_packages() {
     print_message $YELLOW "Skipping package installation."
   fi
 }
-
-# Function to install Homebrew cask fonts and a specific font
-install_fonts() {
-  read -p "Do you want to install font-terminess-ttf-nerd-font? (y/n) " choice
-  if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
-    print_message $YELLOW "Tapping homebrew/cask-fonts and installing font-terminess-ttf-nerd-font..."
-    brew install --cask font-terminess-ttf-nerd-font
-    if [[ $? -eq 0 ]]; then
-      print_message $GREEN "Font installation completed."
-    else
-      print_message $RED "Error: Installation of font-terminess-ttf-nerd-font failed."
-    fi
-  else
-    print_message $YELLOW "Skipping Font installation."
-  fi
-}
