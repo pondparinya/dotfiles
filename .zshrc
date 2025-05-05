@@ -18,6 +18,8 @@ source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
 alias v="nvim"
+alias vi="nvim"
+alias vim="vim"
 export VISUAL='nvim'
 export EDITOR='nvim'
 
@@ -115,13 +117,13 @@ _fzf_comprun() {
 
 # ---- Eza (better ls) -----
 
-alias ls="eza --icons=always"
+# alias ls="eza --icons=always"
 
 # ---- TheFuck -----
 
 # thefuck alias
-eval $(thefuck --alias)
-eval $(thefuck --alias fk)
+# eval $(thefuck --alias)
+# eval $(thefuck --alias fk)
 
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
