@@ -144,3 +144,5 @@ alias cd="z"
 # alias gomodoff='export GO111MODULE="off"'
 # alias gomodon='export GO111MODULE="on"'
 # alias golibtool='export C_INCLUDE_PATH=$C_INCLUDE_PATH:/opt/homebrew/include && export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/opt/libtool/lib'
+
+export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g

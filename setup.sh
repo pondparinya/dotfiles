@@ -1,21 +1,23 @@
 #!/bin/bash
 
-# Source the individual scripts
-source .scripts/print.sh
-source .scripts/install_homebrew.sh
-source .scripts/install_brew_packages.sh
-source .scripts/install_fonts.sh
-source .scripts/set_default_shell.sh
+# Load shared functions and scripts
+source scripts/print.sh
+source scripts/install_homebrew.sh
+source scripts/install_brew_packages.sh
+source scripts/install_fonts.sh
+source scripts/setup_shell.sh
+source scripts/install_nvim.sh
 
 main() {
-  install_homebrew
-  install_brew_packages
-  install_fonts
-  set_default_shell
-  source install_nvim.sh
+    print_message "$YELLOW" "Starting dotfiles setup..."
+
+    install_homebrew
+    install_brew_packages
+    install_fonts
+    setup_shell
+    install_nvim
+
+    print_message "$GREEN" "Dotfiles setup completed."
 }
 
-# Call the main function
 main
-
-# End of file

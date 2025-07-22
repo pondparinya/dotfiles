@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. .scripts/print.sh
+. scripts/print.sh
 
 # Function to restore Neovim-related files from .bak
 restore_nvim() {

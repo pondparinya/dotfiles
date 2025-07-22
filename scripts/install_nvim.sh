@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. .scripts/print.sh
+. scripts/print.sh
 
 SOURCE="$HOME/.dotfiles/config/nvim"
 DESTINATION="$HOME/.config/nvim"

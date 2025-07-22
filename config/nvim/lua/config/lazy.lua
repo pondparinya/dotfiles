@@ -21,10 +21,10 @@ require("lazy").setup({
     -- import/override with your plugins
     { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.formatting.prettier" },
-    { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
+    -- { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     { import = "lazyvim.plugins.extras.ui.edgy" },
     -- { import = "lazyvim.plugins.extras.ui.smear-cursor" },
-    { import = "lazyvim.plugins.extras.editor.mini-diff" },
+    -- { import = "lazyvim.plugins.extras.editor.mini-diff" },
     { import = "lazyvim.plugins.extras.editor.snacks_explorer" },
 
     { import = "plugins" },

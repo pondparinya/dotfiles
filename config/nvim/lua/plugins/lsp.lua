@@ -4,20 +4,29 @@ return {
     "williamboman/mason.nvim",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
+        -- Lua
         "stylua",
         "luacheck",
+
+        -- Shell
         "shellcheck",
         "shfmt",
+        "bash-language-server",
+        "beautysh",
+
+        -- Go
         "gopls",
-        "hadolint",
         "goimports",
         "gofumpt",
         "gomodifytags",
         "impl",
+
+        -- Web/JS
         "prettier",
+
+        -- YAML/Docker
         "yaml-language-server",
-        "beautysh",
-        "bash-language-server",
+        "hadolint",
       })
     end,
   },

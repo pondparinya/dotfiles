@@ -1,6 +1,9 @@
 -- Leader key
 vim.g.mapleader = " " -- The leader key is used in mappings (e.g., <leader>w for saving a file).
 
+-- Ensure clipboard is enabled (often the default with GUI or modern Neovim builds)
+-- vim.opt.clipboard:append("unnamedplus") -- Use system clipboard
+
 -- Encoding
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
