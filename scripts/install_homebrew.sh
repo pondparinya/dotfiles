@@ -3,25 +3,33 @@
 set -euo pipefail
 
 # Load print functions
-source "$(dirname "$0")/print.sh"
+source "scripts/print.sh"
 
 install_homebrew() {
     if command -v brew &>/dev/null; then
-        print_message "$CYAN" "✅ Homebrew is already installed."
-    else
-        print_message "$YELLOW" "🚀 Installing Homebrew..."
-        NONINTERACTIVE=1 /bin/bash -c \
-            "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-        # Add Homebrew to PATH (for Apple Silicon and Intel Macs)
-        if [[ -d /opt/homebrew/bin ]]; then
-            eval "$(/opt/homebrew/bin/brew shellenv)"
-        elif [[ -d /usr/local/bin ]]; then
-            eval "$(/usr/local/bin/brew shellenv)"
-        fi
-
-        print_message "$GREEN" "✅ Homebrew installed successfully."
+        success "Homebrew is already installed."
+        return 0
     fi
+
+    warning "Installing Homebrew..."
+    if ! NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; then
+        error "Homebrew installation failed."
+        return 1
+    fi
+
+    # Add Homebrew to PATH
+    local brew_path
+    if [[ -x "/opt/homebrew/bin/brew" ]]; then
+        brew_path="/opt/homebrew/bin/brew"
+    elif [[ -x "/usr/local/bin/brew" ]]; then
+        brew_path="/usr/local/bin/brew"
+    else
+        error "Homebrew executable not found after installation."
+        return 1
+    fi
+
+    eval "$("$brew_path" shellenv)"
+    success "Homebrew installed and configured successfully."
 }
 
 # Run install

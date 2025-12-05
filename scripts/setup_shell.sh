@@ -3,32 +3,41 @@
 set -euo pipefail
 
 # Load print functions
-source "$(dirname "$0")/print.sh"
+source "scripts/print.sh"
 
 setup_shell() {
-    print_message "$YELLOW" "🐚 Setting up shell environment..."
+    warning "Setting up shell environment..."
 
     # Check if zsh is already the default shell
     if [[ "$SHELL" == *"zsh" ]]; then
-        print_message "$CYAN" "✔️  Zsh is already your default shell."
+        success "Zsh is already your default shell."
+        return 0
+    fi
+
+    # Ensure zsh is installed
+    if ! command -v zsh &>/dev/null; then
+        error "Zsh is not installed. Please install zsh first."
+        return 1
+    fi
+
+    local zsh_path
+    zsh_path="$(command -v zsh)"
+
+    # Add zsh to the list of valid shells if not present
+    if ! grep -Fxq "$zsh_path" /etc/shells; then
+        info "Adding $zsh_path to /etc/shells..."
+        if ! echo "$zsh_path" | sudo tee -a /etc/shells >/dev/null; then
+            error "Failed to add zsh to /etc/shells. Please check your sudo permissions."
+            return 1
+        fi
+    fi
+
+    info "Changing default shell to zsh..."
+    if chsh -s "$zsh_path"; then
+        success "Default shell changed to zsh. Please restart your terminal for the change to take effect."
     else
-        # Ensure zsh is installed
-        if ! command -v zsh &>/dev/null; then
-            print_message "$RED" "❌ Zsh is not installed. Please install zsh first."
-            exit 1
-        fi
-
-        zsh_path="$(command -v zsh)"
-
-        # Add zsh to the list of valid shells if not present
-        if ! grep -Fxq "$zsh_path" /etc/shells; then
-            print_message "$CYAN" "🔧 Adding $zsh_path to /etc/shells..."
-            echo "$zsh_path" | sudo tee -a /etc/shells
-        fi
-
-        print_message "$CYAN" "🔁 Changing default shell to zsh..."
-        chsh -s "$zsh_path"
-        print_message "$GREEN" "✅ Default shell changed to zsh. Please restart your terminal."
+        error "Failed to change default shell. Please try running 'chsh -s $zsh_path' manually."
+        return 1
     fi
 }
 

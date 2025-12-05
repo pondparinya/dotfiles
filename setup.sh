@@ -9,7 +9,7 @@ source scripts/setup_shell.sh
 source scripts/install_nvim.sh
 
 main() {
-    print_message "$YELLOW" "Starting dotfiles setup..."
+    info "Starting dotfiles setup..."
 
     install_homebrew
     install_brew_packages
@@ -17,7 +17,7 @@ main() {
     setup_shell
     install_nvim
 
-    print_message "$GREEN" "Dotfiles setup completed."
+    success "Dotfiles setup completed."
 }
 
 main

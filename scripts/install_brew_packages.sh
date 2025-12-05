@@ -3,35 +3,46 @@
 set -euo pipefail
 
 # Load print functions
-source "$(dirname "$0")/print.sh"
+source "scripts/print.sh"
 
 install_brew_packages() {
-    print_message "$YELLOW" "📦 Installing brew packages..."
+    warning "Checking brew packages..."
 
-    packages=(
-        "git"
-        "neovim"
-        "fzf"
-        "ripgrep"
-        "gh"
-        "tmux"
-        "htop"
-        "exa"
-        "bat"
-        "wget"
-        "fd"
-    )
+    local package_file
+    package_file="utils/brew_packages.txt"
 
+    if [[ ! -f "$package_file" ]]; then
+        error "Package file not found: $package_file"
+        return 1
+    fi
+
+    mapfile -t packages < <(grep -vE '^\s*#|^\s*$' "$package_file")
+
+    if [ ${#packages[@]} -eq 0 ]; then
+        warning "No packages listed in $package_file. Nothing to do."
+        return 0
+    fi
+
+    local to_install=()
     for package in "${packages[@]}"; do
         if brew list "$package" &>/dev/null; then
-            print_message "$CYAN" "✔️  $package is already installed."
+            info "$package is already installed."
         else
-            print_message "$CYAN" "⏳ Installing $package..."
-            brew install "$package"
+            to_install+=("$package")
         fi
     done
 
-    print_message "$GREEN" "✅ All brew packages installed."
+    if [ ${#to_install[@]} -gt 0 ]; then
+        info "Installing missing packages: ${to_install[*]}..."
+        if brew install "${to_install[@]}"; then
+            success "All brew packages are now installed."
+        else
+            error "Failed to install some brew packages."
+            return 1
+        fi
+    else
+        success "All required brew packages are already installed."
+    fi
 }
 
 # Run install
