@@ -53,5 +53,5 @@ setopt SHARE_HISTORY          # Share history between sessions
 source $ZSH/oh-my-zsh.sh
 
 # Custom Aliases and Extensions
-source_if_exists ~/.zsh_aliases
-source_if_exists ~/.zsh_extensions
+source_if_exists ~/.zshrch_aliases
+source_if_exists ~/.zshrch_extensions
