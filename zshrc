@@ -36,7 +36,7 @@ export GOCACHE=$HOME/.cache/go
 export GO111MODULE=auto
 
 # History Configuration
-export HISTFILE=$HOME/.zhistory
+export HISTFILE=$HOME/.zsh_history
 export HISTSIZE=50000
 export SAVEHIST=50000
 setopt EXTENDED_HISTORY       # Write timestamp to history
