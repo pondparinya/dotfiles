@@ -8,17 +8,22 @@ source "scripts/print.sh"
 install_brew_packages() {
     warning "Checking brew packages..."
 
-    local package_file
-    package_file="utils/brew_packages.txt"
+    local package_file="utils/brew_packages.txt"
 
     if [[ ! -f "$package_file" ]]; then
         error "Package file not found: $package_file"
         return 1
     fi
 
-    mapfile -t packages < <(grep -vE '^\s*#|^\s*$' "$package_file")
+    # Read packages manually (skip comments & empty lines)
+    local packages=()
+    while IFS= read -r line; do
+        # Skip empty lines or lines starting with #
+        [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
+        packages+=("$line")
+    done <"$package_file"
 
-    if [ ${#packages[@]} -eq 0 ]; then
+    if [[ ${#packages[@]} -eq 0 ]]; then
         warning "No packages listed in $package_file. Nothing to do."
         return 0
     fi
@@ -32,7 +37,7 @@ install_brew_packages() {
         fi
     done
 
-    if [ ${#to_install[@]} -gt 0 ]; then
+    if [[ ${#to_install[@]} -gt 0 ]]; then
         info "Installing missing packages: ${to_install[*]}..."
         if brew install "${to_install[@]}"; then
             success "All brew packages are now installed."
@@ -44,6 +49,3 @@ install_brew_packages() {
         success "All required brew packages are already installed."
     fi
 }
-
-# Run install
-install_brew_packages

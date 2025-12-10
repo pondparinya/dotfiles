@@ -1,0 +1,6 @@
+# Go
+alias gor="go run"
+alias gom="go mod"
+alias gomt="go mod tidy"
+alias gofmt="gofmt -s -w"
+alias goinstall="go install"

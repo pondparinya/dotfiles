@@ -40,6 +40,3 @@ setup_shell() {
         return 1
     fi
 }
-
-# Run shell setup
-setup_shell

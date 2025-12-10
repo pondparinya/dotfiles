@@ -1,5 +1,5 @@
 [user]
-    name = Parinya
-    email = pondparinyaaa@gmail.com
-; [core]
-;     editor = nvim
+    name = name
+    email = email
+[core]
+    editor = nvim

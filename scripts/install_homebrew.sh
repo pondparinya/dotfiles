@@ -31,6 +31,3 @@ install_homebrew() {
     eval "$("$brew_path" shellenv)"
     success "Homebrew installed and configured successfully."
 }
-
-# Run install
-install_homebrew

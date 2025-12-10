@@ -88,6 +88,3 @@ setup_neovim() {
 
     success "Neovim setup finished."
 }
-
-# --- Execution ---
-setup_neovim

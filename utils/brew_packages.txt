@@ -3,7 +3,6 @@ eza
 fd
 fzf
 git
-go
 gotop
 lazygit
 libtool
@@ -12,6 +11,7 @@ node
 powerlevel10k
 rg
 ripgrep
-thefuck
 zoxide
 zsh
+zsh-syntax-highlighting
+zsh-autosuggestions

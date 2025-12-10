@@ -7,6 +7,7 @@ source scripts/install_brew_packages.sh
 source scripts/install_fonts.sh
 source scripts/setup_shell.sh
 source scripts/install_nvim.sh
+source scripts/install_ohmyzsh.sh
 
 main() {
     info "Starting dotfiles setup..."
@@ -15,7 +16,8 @@ main() {
     install_brew_packages
     install_fonts
     setup_shell
-    install_nvim
+    setup_neovim
+    setup_ohmyzsh
 
     success "Dotfiles setup completed."
 }

@@ -1,14 +1,24 @@
 return {
   {
-    "ray-x/go.nvim",
-    dependencies = { "ray-x/guihua.lua" },
-    config = true,
-  },
-  {
-    "mfussenegger/nvim-dap",
-  },
-  {
-    "leoluz/nvim-dap-go",
-    config = true,
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        gopls = {
+          settings = {
+            gopls = {
+              hints = {
+                assignVariableTypes = false,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = false,
+                rangeVariableTypes = true,
+              },
+            },
+          },
+        },
+      },
+    },
   },
 }

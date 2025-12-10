@@ -34,6 +34,3 @@ install_fonts() {
         fi
     done
 }
-
-# Run font installation
-install_fonts
