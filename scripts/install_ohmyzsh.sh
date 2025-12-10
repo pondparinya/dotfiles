@@ -36,11 +36,6 @@ link_zshrc() {
 
 setup_ohmyzsh() {
     if prompt_yes_no "Do you want to set up oh-my-zsh now?"; then
-        if ! check_dir_exists "$OH_MY_ZSH_DEST"; then
-            install_ohmyzsh
-        else
-            warning "Oh My Zsh is already installed."
-        fi
 
         if ! check_file_exists "$ZSHRC_ALIASES_DEST"; then
             ln -vsnf "$ZSHRC_ALIASES_SOURCE" "$ZSHRC_ALIASES_DEST"
@@ -77,6 +72,13 @@ setup_ohmyzsh() {
                 warning "Skipping linking custom .zshrc."
             fi
         fi
+
+        if ! check_dir_exists "$OH_MY_ZSH_DEST"; then
+            install_ohmyzsh
+        else
+            warning "Oh My Zsh is already installed."
+        fi
+
     else
         warning "Skipping Oh My Zsh installation."
     fi

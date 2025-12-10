@@ -16,6 +16,7 @@ export ZSH_THEME="robbyrussell"
 # ==============================================================================================
 source_if_exists "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source_if_exists "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source_if_exists "$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme"
 # ==============================================================================================
 
 # Local bin
@@ -47,6 +48,9 @@ setopt HIST_FIND_NO_DUPS      # Don't display duplicates
 setopt HIST_IGNORE_SPACE      # Don't record entries starting with space
 setopt HIST_SAVE_NO_DUPS      # Don't write duplicates
 setopt SHARE_HISTORY          # Share history between sessions
+
+# Oh My Zsh
+source $ZSH/oh-my-zsh.sh
 
 # Custom Aliases and Extensions
 source_if_exists ~/.zsh_aliases

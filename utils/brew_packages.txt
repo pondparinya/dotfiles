@@ -11,6 +11,8 @@ node
 powerlevel10k
 rg
 ripgrep
+tree-sitter
+tree-sitter-cli
 zoxide
 zsh
 zsh-syntax-highlighting
