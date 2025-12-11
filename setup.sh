@@ -14,7 +14,7 @@ main() {
 
     install_homebrew
     install_brew_packages
-    install_fonts
+    # install_fonts
     setup_shell
     setup_neovim
     setup_ohmyzsh

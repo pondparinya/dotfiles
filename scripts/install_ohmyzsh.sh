@@ -9,9 +9,11 @@ OH_MY_ZSH_DEST="$HOME/.oh-my-zsh"
 ZSHRC_ALIASES_DEST="$HOME/.zshrc_aliases"
 ZSHRC_ALIASES_SOURCE="$HOME/.dotfiles/.zshrc_aliases"
 ZSHRC_DEST="$HOME/.zshrc"
-ZSHRC_EXTENSIONS_SOURCE="$HOME/.dotfiles/.zshrch_extensions"
+ZSHRC_EXTENSIONS_SOURCE="$HOME/.dotfiles/.zshrc_extensions"
 ZSHRC_SOURCE="$HOME/.dotfiles/.zshrc"
-ZZSHRC_EXTENSIONS_DEST="$HOME/.zshrch_extensions"
+ZSHRC_EXTENSIONS_DEST="$HOME/.zshrc_extensions"
+ZSHRC_OHMYZSH_CUSTOM_DEST="$HOME/.zshrc_ohmyzsh_custom"
+ZSHRC_OHMYZSH_CUSTOM_SOURCE="$HOME/.dotfiles/.zshrc_ohmyzsh_custom"
 
 check_dir_exists() {
     [ -d "$1" ]
@@ -50,11 +52,18 @@ setup_ohmyzsh() {
             warning ".zshrc_aliases already exists in home directory. Skipping linking."
         fi
 
-        if ! check_file_exists "$ZZSHRC_EXTENSIONS_DEST"; then
-            ln -vsnf "$ZSHRC_EXTENSIONS_SOURCE" "$ZZSHRC_EXTENSIONS_DEST"
+        if ! check_file_exists "$ZSHRC_EXTENSIONS_DEST"; then
+            ln -vsnf "$ZSHRC_EXTENSIONS_SOURCE" "$ZSHRC_EXTENSIONS_DEST"
             success "Linked .zshrc_extensions successfully."
         else
             warning ".zshrc_extensions already exists in home directory. Skipping linking."
+        fi
+
+        if ! check_file_exists "$ZSHRC_OHMYZSH_CUSTOM_DEST"; then
+            ln -vsnf "$ZSHRC_OHMYZSH_CUSTOM_SOURCE" "$ZSHRC_OHMYZSH_CUSTOM_DEST"
+            success "Linked .zshrc_ohmyzsh_custom successfully."
+        else
+            warning ".zshrc_ohmyzsh_custom already exists in home directory. Skipping linking."
         fi
 
         if ! check_file_exists "$ZSHRC_DEST"; then

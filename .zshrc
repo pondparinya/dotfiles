@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Function to source a file if it exists
 source_if_exists() {
   if [ -f "$1" ]; then
@@ -19,6 +26,12 @@ source_if_exists "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions
 source_if_exists "$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme"
 # ==============================================================================================
 
+# Custom Oh My Zsh Configurations
+source_if_exists ~/.zshrc_ohmyzsh_custom
+
+# Oh My Zsh
+source $ZSH/oh-my-zsh.sh
+
 # Local bin
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -29,6 +42,8 @@ export VISUAL='nvim'
 # Aliases Default
 alias v="nvim"
 alias vi="nvim"
+# Aliases Custom
+source_if_exists ~/.zshrc_aliases
 
 # Go Configuration
 export GOPATH=$HOME/go
@@ -49,9 +64,6 @@ setopt HIST_IGNORE_SPACE      # Don't record entries starting with space
 setopt HIST_SAVE_NO_DUPS      # Don't write duplicates
 setopt SHARE_HISTORY          # Share history between sessions
 
-# Oh My Zsh
-source $ZSH/oh-my-zsh.sh
 
-# Custom Aliases and Extensions
-source_if_exists ~/.zshrch_aliases
-source_if_exists ~/.zshrch_extensions
+# Custom Extensions
+source_if_exists ~/.zshrc_extensions
