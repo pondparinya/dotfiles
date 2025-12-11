@@ -11,13 +11,34 @@ source scripts/install_ohmyzsh.sh
 
 main() {
     info "Starting dotfiles setup..."
+    if prompt_yes_no "Do you want to initial Homebrew ?"; then
+        info "Setting up Homebrew and packages..."
+        install_homebrew
+        install_brew_packages
+        success "Homebrew and packages setup completed."
 
-    install_homebrew
-    install_brew_packages
+    else
+        warning "Skipping Homebrew and packages setup."
+    fi
     # install_fonts
-    setup_shell
-    setup_neovim
-    setup_ohmyzsh
+
+    if prompt_yes_no "Do you want to setup zsh to default now?"; then
+        setup_shell
+    else
+        warning "Skipping shell setup."
+    fi
+
+    if prompt_yes_no "Do you want to setup Neovim now?"; then
+        setup_neovim
+    else
+        warning "Skipping Neovim setup."
+    fi
+
+    if prompt_yes_no "Do you want to setup Oh My Zsh now?"; then
+        setup_ohmyzsh
+    else
+        warning "Skipping Oh My Zsh setup."
+    fi
 
     success "Dotfiles setup completed."
 }

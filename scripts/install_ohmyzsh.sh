@@ -34,61 +34,57 @@ link_zshrc() {
     warning "Linking custom .zshrc from dotfiles..."
     ln -vsnf "$ZSHRC_SOURCE" "$ZSHRC_DEST"
     success "Linked .zshrc successfully."
+    info "Can you run 'zsh' to apply the changes to your current terminal session."
 }
 
 setup_ohmyzsh() {
-    if prompt_yes_no "Do you want to set up oh-my-zsh now?"; then
 
-        if ! check_dir_exists "$OH_MY_ZSH_DEST"; then
-            install_ohmyzsh
-        else
-            warning "Oh My Zsh is already installed."
-        fi
+    if ! check_dir_exists "$OH_MY_ZSH_DEST"; then
+        install_ohmyzsh
+    else
+        warning "Oh My Zsh is already installed."
+    fi
 
-        if ! check_file_exists "$ZSHRC_ALIASES_DEST"; then
-            ln -vsnf "$ZSHRC_ALIASES_SOURCE" "$ZSHRC_ALIASES_DEST"
-            success "Linked .zshrc_aliases successfully."
-        else
-            warning ".zshrc_aliases already exists in home directory. Skipping linking."
-        fi
+    if ! check_file_exists "$ZSHRC_ALIASES_DEST"; then
+        ln -vsnf "$ZSHRC_ALIASES_SOURCE" "$ZSHRC_ALIASES_DEST"
+        success "Linked .zshrc_aliases successfully."
+    else
+        warning ".zshrc_aliases already exists in home directory. Skipping linking."
+    fi
 
-        if ! check_file_exists "$ZSHRC_EXTENSIONS_DEST"; then
-            ln -vsnf "$ZSHRC_EXTENSIONS_SOURCE" "$ZSHRC_EXTENSIONS_DEST"
-            success "Linked .zshrc_extensions successfully."
-        else
-            warning ".zshrc_extensions already exists in home directory. Skipping linking."
-        fi
+    if ! check_file_exists "$ZSHRC_EXTENSIONS_DEST"; then
+        ln -vsnf "$ZSHRC_EXTENSIONS_SOURCE" "$ZSHRC_EXTENSIONS_DEST"
+        success "Linked .zshrc_extensions successfully."
+    else
+        warning ".zshrc_extensions already exists in home directory. Skipping linking."
+    fi
 
-        if ! check_file_exists "$ZSHRC_OHMYZSH_CUSTOM_DEST"; then
-            ln -vsnf "$ZSHRC_OHMYZSH_CUSTOM_SOURCE" "$ZSHRC_OHMYZSH_CUSTOM_DEST"
-            success "Linked .zshrc_ohmyzsh_custom successfully."
-        else
-            warning ".zshrc_ohmyzsh_custom already exists in home directory. Skipping linking."
-        fi
+    if ! check_file_exists "$ZSHRC_OHMYZSH_CUSTOM_DEST"; then
+        ln -vsnf "$ZSHRC_OHMYZSH_CUSTOM_SOURCE" "$ZSHRC_OHMYZSH_CUSTOM_DEST"
+        success "Linked .zshrc_ohmyzsh_custom successfully."
+    else
+        warning ".zshrc_ohmyzsh_custom already exists in home directory. Skipping linking."
+    fi
 
-        if ! check_file_exists "$ZSHRC_DEST"; then
+    if ! check_file_exists "$ZSHRC_DEST"; then
+        link_zshrc
+    else
+        warning ".zshrc already exists in home directory."
+        if prompt_yes_no "Do you want to back up the existing .zshrc and link the custom one?"; then
+            if [ -e "${ZSHRC_DEST}.bak" ]; then
+                if prompt_yes_no "Backup file ${ZSHRC_DEST}.bak already exists. Overwrite?"; then
+                    mv -f "$ZSHRC_DEST" "${ZSHRC_DEST}.bak"
+                else
+                    warning "Backup aborted. Existing .zshrc not overwritten."
+                    return 1
+                fi
+            else
+                mv "$ZSHRC_DEST" "${ZSHRC_DEST}.bak"
+            fi
+            info "Backed up existing .zshrc to .zshrc.bak"
             link_zshrc
         else
-            warning ".zshrc already exists in home directory."
-            if prompt_yes_no "Do you want to back up the existing .zshrc and link the custom one?"; then
-                if [ -e "${ZSHRC_DEST}.bak" ]; then
-                    if prompt_yes_no "Backup file ${ZSHRC_DEST}.bak already exists. Overwrite?"; then
-                        mv -f "$ZSHRC_DEST" "${ZSHRC_DEST}.bak"
-                    else
-                        warning "Backup aborted. Existing .zshrc not overwritten."
-                        return 1
-                    fi
-                else
-                    mv "$ZSHRC_DEST" "${ZSHRC_DEST}.bak"
-                fi
-                info "Backed up existing .zshrc to .zshrc.bak"
-                link_zshrc
-            else
-                warning "Skipping linking custom .zshrc."
-            fi
+            warning "Skipping linking custom .zshrc."
         fi
-
-    else
-        warning "Skipping Oh My Zsh installation."
     fi
 }

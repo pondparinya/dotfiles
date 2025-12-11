@@ -12,7 +12,7 @@ print_message() {
     local color="$1"
     shift
     local message="$@"
-    echo -e "${color}${message}${NC}"
+    echo -e "${color}${message}${NC} \n"
 }
 
 # Convenience functions for different message types
